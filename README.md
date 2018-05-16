@@ -1,5 +1,8 @@
 # How to create the VM
 
+## Setup VirtualBox
+Install the latest version of [VirtualBox](https://www.virtualbox.org/wiki/Downloads).
+
 ## Setup Vagrant
 Install the latest version of [Vagrant](https://www.vagrantup.com/).
 
