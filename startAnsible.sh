@@ -3,7 +3,7 @@
 cd /home/vagrant
 mkdir projects
 cd projects
-git clone https://github.com/adessoAnsible/example
-cd example
+git clone https://${USERNAME}:${PASSWORD}@${REPOSITORY} setup
+cd setup
 ansible-galaxy install -r requirements.yml
-ansible-playbook playbook.yml
+ansible-playbook playbook.yml 
