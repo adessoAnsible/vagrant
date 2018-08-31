@@ -2,7 +2,7 @@ Vagrant.require_version ">= 1.7.0"
 
 Vagrant.configure(2) do |config|
 	config.vm.box = "ubuntu-18"
-    config.vm.box_url = "https://lmv-ulm.adesso.ch/external_media/ubuntu-18.04-201807.box"
+    config.vm.box_url = "https://lmv-ulm.adesso.ch/external_media/ubuntu-18.04-201808.box"
 
 	config.vm.provider "virtualbox" do |v|
 	    v.memory = 8196
