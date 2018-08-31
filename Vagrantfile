@@ -17,7 +17,7 @@ Vagrant.configure(2) do |config|
         end
     end
 
-	class Username
+	class GitUsername
         def to_s
             print "Virtual machine needs your git user and password.\n"
             print "Username: "
@@ -25,7 +25,28 @@ Vagrant.configure(2) do |config|
         end
     end
 
-    class Password
+    class GitPassword
+        def to_s
+            begin
+            system 'stty -echo'
+            print "Password: "
+            pass = URI.escape(STDIN.gets.chomp)
+            ensure
+            system 'stty echo'
+            end
+            pass
+        end
+    end
+
+	class NexusUsername
+        def to_s
+            print "Virtual machine needs your nexus user and password.\n"
+            print "Username: "
+            STDIN.gets.chomp
+        end
+    end
+
+    class NexusPassword
         def to_s
             begin
             system 'stty -echo'
@@ -39,5 +60,5 @@ Vagrant.configure(2) do |config|
     end
 
 	config.vm.provision :shell, :privileged => true, :path => "setup.sh"
-	config.vm.provision :shell, env: {"REPOSITORY" => Repositoryname.new, "USERNAME" => Username.new, "PASSWORD" => Password.new}, :privileged => false, :path => "startAnsible.sh"
+	config.vm.provision :shell, env: {"REPOSITORY" => Repositoryname.new, "GIT_USERNAME" => GitUsername.new, "GIT_PASSWORD" => GitPassword.new, "NEXUS_USERNAME" => NexusUsername.new, "NEXUS_PASSWORD" => NexusPassword.new}, :privileged => false, :path => "startAnsible.sh"
 end
