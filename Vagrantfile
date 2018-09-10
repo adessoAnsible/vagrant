@@ -4,9 +4,6 @@ Vagrant.configure(2) do |config|
 	config.vm.box = "ubuntu-18"
 	config.vm.box_url = "https://lmv-ulm.adesso.ch/external_media/ubuntu-18.04-201808.box"
 
-	# Display the VirtualBox GUI when booting the machine
-	vb.gui = true
-	
 	config.vm.provider "virtualbox" do |v|
 	    v.memory = 8196
         v.cpus = 2
@@ -42,5 +39,5 @@ Vagrant.configure(2) do |config|
     end
 
 	config.vm.provision :shell, :privileged => true, :path => "setup.sh"
-	config.vm.provision :shell, env: {"REPOSITORY" => Repositoryname.new, "GIT_USERNAME" => GitUsername.new, "GIT_PASSWORD" => GitPassword.new, "NEXUS_USERNAME" => NexusUsername.new, "NEXUS_PASSWORD" => NexusPassword.new}, :privileged => false, :path => "startAnsible.sh"
+	config.vm.provision :shell, env: {"REPOSITORY" => Repositoryname.new, "NEXUS_USERNAME" => NexusUsername.new, "NEXUS_PASSWORD" => NexusPassword.new}, :privileged => false, :path => "startAnsible.sh"
 end
